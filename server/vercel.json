@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "pinecone-vision",
+  "name": "image-rocignition-app",
   "builds": [{ "src": "src/index.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "src/index.js" }]
 }

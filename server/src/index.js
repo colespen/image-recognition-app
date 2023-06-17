@@ -12,6 +12,10 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
+app.get("/", (req, res) => {
+  res.send("hey this a test - ok");
+});
+
 app.get("/api/health", async (_, res) => {
   res.send("ok");
 });
@@ -21,4 +25,4 @@ app.post("/api/image", handleImage);
 app.delete("/api/user", handleDeleteUser);
 
 // Start the HTTP server
-server.listen(port, () => console.log(`Listening on port ${port}`));
+server.listen(port, () => console.log(`Listening on port ${port}...`));

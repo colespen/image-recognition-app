@@ -10,6 +10,9 @@ await pineconeClient.init({
   environment: process.env.PINECONE_ENVIRONMENT,
 });
 
+// Pinecone
+
+// select index and write using `index.upsert` method
 const saveEmbedding = async ({ id, values, metadata, namespace }) => {
   const index = pineconeClient.Index(indexName);
   const upsertRequest = {
@@ -36,12 +39,15 @@ const saveEmbedding = async ({ id, values, metadata, namespace }) => {
   }
 };
 
+// select index, number of results, 
+// result will inc. array of matches, pick first one
+// return label and confidence score
 const queryEmbedding = async ({ values, namespace }) => {
   const index = pineconeClient.Index(indexName);
   const queryRequest = {
-    topK: 1,
-    vector: values,
-    includeMetadata: true,
+    topK: 1, // # of results
+    vector: values, // vecotr for query
+    includeMetadata: true, // (incl. label)
     namespace,
   };
   try {

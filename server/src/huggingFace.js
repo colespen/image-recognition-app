@@ -1,9 +1,13 @@
+// Hugging Face
+
 import * as dotenv from "dotenv";
 dotenv.config();
 
 const inferenceEndpointUrl = process.env.INFERENCE_ENDPOINT;
 const inferenceEndpointToken = process.env.INFERENCE_ENDPOINT_TOKEN;
 
+
+// send images with text to Hugging Face enpoint and return embedding
 const getEmbeddings = async (imageBase64, words) => {
   const data = {
     inputs: {

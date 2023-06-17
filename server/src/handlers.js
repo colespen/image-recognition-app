@@ -4,6 +4,12 @@ import { getEmbeddings } from "./huggingFace.js";
 
 const md5 = (str) => crypto.createHash("md5").update(str).digest("hex");
 
+// handles training and detecting states of application
+    // training: send embeddings, id and metadata (incl. label) to saveEmbedding()
+    // detecting: sends embeddings and id to queryEmbedding()
+
+// use `user` identifier to write and read embeddings to a namepsapce in Pinecone 
+// which keep diff. user data separate
 const handleEmbedding = async ({
   id,
   embeddings,
@@ -28,6 +34,7 @@ const handleEmbedding = async ({
   }
 };
 
+// receive images from device
 const handleImage = async (req, res) => {
   const data = req.body;
 
